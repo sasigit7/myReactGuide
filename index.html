@@ -1,0 +1,923 @@
+<!-- INSERT A BOILER PLATE CODE -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React JS Quick Guide by Shashi - Twitter: https://twitter.com/ShashiWebDev</title>
+
+    <!-- SETUP A DEVELOPMENT ENVIRONMENT -->
+    <!-- REACT LIBRARY -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <!-- PROP-TYPES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+</head>
+
+<body>
+    <!-- DESIGNATED LOCATION TO INSERT REACT CONTENT -->
+    <div id="app">REACT HAS NOT RENDERED YET!</div>
+
+    <!-- JAVASCRIPT -->
+    <script type="text/babel">
+        // RENDER REACT TO THE DOM - WILL ACCEPT TWO ARGUMENTS (REACT WHAT, REACT WHERE)
+         
+        ///////////////////// => SINGLE ELEMENT <= /////////////////////
+        //  
+        //   ReactDOM.render(
+        //     // REACT WHAT - JSX
+        //        <h1>Hello World!</h1>,
+        //     // REACT WHERE - DIV WITH ID OF "APP"
+        //     document.getElementById("app")
+        //   );
+         
+
+        ///////////////////// => NESTED ELEMENTS: Must be wrapped in a div or other element <= /////////////////////
+        //
+        //   ReactDOM.render(
+        //     // REACT WHAT - JSX
+        //        <div>
+        //         <h1>Header</h1>
+        //         <h2>Content</h2>
+        //         <p>This is the Content!!!!</p>
+        //       </div>,
+        //     // REACT WHERE - DIV WITH ID OF "APP"
+        //     document.getElementById("app")
+        //   );
+         
+        ///////////////////// => ATTRIBUTE USAGE: Must use a data prefix <= /////////////////////
+        // 
+        //   ReactDOM.render(
+        //     // REACT WHAT - JSX
+        //        <div>
+        //         <h1>Header</h1>
+        //         <h2>Content</h2>
+        //         <p data-myAttribute="some value">This is the Content!!!!</p>
+        //        </div>,
+        //     // REACT WHERE - DIV WITH ID OF "APP"
+        //     document.getElementById("app")
+        //   );
+         
+        ///////////////////// => JAVASCRIPT EXPRESSIONS: Must be wrapped in curly braces <= /////////////////////
+        // 
+        //   ReactDOM.render(
+        //     // REACT WHAT - JSX
+        //        <div>
+        //          <h1>{1 + 1}</h1>
+        //        </div>,
+        //     // REACT WHERE - DIV WITH ID OF "APP"
+        //     document.getElementById("app")
+        //   );
+         
+        ///////////////////// => We can use Conditional (Ternary) Expressions but can't use if else statements inside JSX <= /////////////////////
+        //
+        //     let i = 1; // Global Variable
+        //     ReactDOM.render(
+        //         // REACT WHAT - JSX
+        //         <div>
+        //             <h1>{i==1 ? 'True!': 'False'}</h1>
+        //         </div>,
+        //         // REACT WHERE - DIV WITH ID OF "APP"
+        //         document.getElementById("app")
+        //     );
+         
+        ///////////////////// => STYLING: Recommended || Inline styles, camelCase syntax, automatically appends px to number values on specific elements <= /////////////////////
+        //
+        // ->  Declare Styles:
+        //
+        //      var myStyle = {
+        //         fontSize: 100,
+        //         color: 'red',
+        //         border: '5px solid green'
+        //         }
+        //
+        //      ReactDOM.render(
+        //          // REACT WHAT - JSX
+        //          <div>
+        //              <h1 style={myStyle}>Header</h1>
+        //          </div>,
+        //      // REACT WHERE - DIV WITH ID OF "APP"
+        //          document.getElementById("app")
+        //      );
+         
+        ///////////////////// => COMMENTS: Must be wrapped in curly braces <= /////////////////////
+        //
+        //      ReactDOM.render(
+        //      // REACT WHAT - JSX
+        //         <div>
+        //           <h1>Don't display Comment</h1>
+        //           {/* Multi Line Comment...*/}
+        //           {// Single Line Comment...}
+        //         </div>,
+        //      // REACT WHERE - DIV WITH ID OF "APP"
+        //      document.getElementById("app")
+        //   );
+            
+        ///////////////////// => NAMING CONVENTION <= /////////////////////
+        //
+        // HTML tags always use lowercase tag names
+        // React Components start with uppercase
+        // Since JSX is JavaScript, Identifiers such as class and for are referred as className and htmlFor
+
+        ///////////////////// => STATELESS COMPONENTS <= /////////////////////
+        // 
+        // -> Stateless Header Child Component: 
+        //
+        // class Header extends React.Component {
+        //        render() {
+        //            return (
+        //               <div>
+        //                  <h1>Header</h1>
+        //               </div>
+        //          );
+        //      }
+        // }
+        //
+        // -> Stateless Content Child Component:
+        //
+        // class Content extends React.Component {
+        //        render() {
+        //            return (
+        //             <div>
+        //               <h2>Content</h2>
+        //               <p>This is paragraph...</p>
+        //             </div>
+        //         );
+        //     }
+        // }  
+        //
+        // -> Stateless App Parent Component:
+        //
+        // class App extends React.Component {
+        //     render() {
+        //         return(
+        //             <div>
+        //               <Header />
+        //               <Content />    
+        //             </div>
+        //         );
+        //     }
+        // }
+        //       
+        // ReactDOM.render(
+        //         // REACT WHAT - JSX
+        //         <App />,
+        //         // REACT WHERE - DIV WITH ID OF "APP"
+        //         document.getElementById("app")
+        //     );
+
+        ///////////////////// => STATEFUL COMPONENTS <= /////////////////////  
+        //
+        // -> Stateless Header Child Component:
+        //
+        // class Header extends React.Component {
+        //     render() {
+        //         return (
+        //             <h1>Header</h1>
+        //         );
+        //     }
+        // }
+        //
+        // -> Stateless TableRow Child Component:
+        //
+        //    class TableRow extends React.Component {
+        //         render () {
+        //             return (
+        //                 <tr>
+        //                     {/* props(properties) are used to send data to components  */}
+        //                    <td>{this.props.data.id}</td>
+        //                    <td>{this.props.data.name}</td>
+        //                    <td>{this.props.data.age}</td> 
+        //                 </tr>
+        //             );
+        //         }
+        //   }    
+        //
+        // -> Stateful App Parent Component:
+        //   class App extends React.Component {
+        //       constructor() { // Constructor method is used to initialize the state
+        //           super(); // super will call the constructor of its parent class
+        //           this.state = { // Components data will be stored in component's state
+        //               data: [
+        //                   {
+        //                     "id": 1, 
+        //                     "name": 'Foo',
+        //                     "age": "20"
+        //                   },
+        //                   {
+        //                     "id": 2,
+        //                     "name": "Bar",
+        //                     "age": "30"
+        //                   },
+        //                   {
+        //                     "id": 3, 
+        //                     "name": "Baz",
+        //                     "age": "40"  
+        //                   }
+        //               ]
+        //           }
+        //       }
+        //
+        //        render () {
+        //           return (
+        //              <div>
+        //                <Header />
+        //                <table>
+        //                  <tbody>
+        //                     {this.state.data.map(
+        //                         // Dynamically inserting a TableRow for every object from the data array.
+        //                         (person, i) => <TableRow key = {i} data = {person} />
+        //                         // key = {i} will help React to update only necessary elements
+        //                         // instead of re-rendering the entire list when something changes.
+        //                     )}
+        //                  </tbody>
+        //                </table>
+        //              </div>
+        //           );
+        //       }
+        //   }
+        //  
+        //   ReactDOM.render(
+        //       // REACT WHAT 
+        //       <App />,
+        //       // REACT WHERE - DIV WITH ID OF "APP"
+        //       document.getElementById("app")
+        //   );
+
+        ///////////////////// => STATE <= ///////////////////// 
+        // -> Using state: 
+        // class App extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = { //state is the place where the data comes from. Make it as simple as possible and minimize the number of stateful components
+        //             header: "Header from state...",
+        //             content: "Content from state..."
+        //         }
+        //     }
+        //     render() {
+        //         return (
+        //             <div>
+        //               <h1>{this.state.header}</h1>  
+        //               <h2>{this.state.content}</h2>  
+        //             </div>
+        //         );
+        //     }
+        // }
+        // ReactDOM.render(
+        //     // REACT WHAT
+        //     <App />,
+        //     // REACT WHAT - DIV WITH ID OF "APP"
+        //     document.getElementById("app")
+        // );
+
+        ///////////////////// => PROPS <= /////////////////////
+        // 1. The main difference between state and props are that props are immutable.
+        // 2. This is why the container or parent component should define the state that can be updated and changed.
+        // 3. While the child components should only pass data from the state using props.
+        // 4. If we need immutable data in our component, we can just add props to it. 
+        //
+        // -> Using props:
+        //
+        //    class App extends React.Component {
+        //        render() {
+        //            return(
+        //                <div>
+        //                   <h1>{this.props.headerProp}</h1>
+        //                   <h2>{this.props.contentProp}</h2>
+        //                </div>
+        //            );
+        //        }
+        //    }
+        //     ReactDOM.render(
+        //         // REACT WHAT
+        //         <App headerProp = "Header from props..." 
+        //              contentProp = "Content from props..." />,
+        //         // REACT WHERE - DIV WITH ID OF "APP"
+        //         document.getElementById("app")
+        //     );
+        
+        // -> Default props: 
+        // We can set default property values directly on the component constructor instead of 
+        // adding it to the reactDOM.render() element.
+        //
+        //    class App extends React.Component {
+        //        render() {
+        //            return (
+        //                <div>
+        //                  <h1>{this.props.headerProp}</h1>
+        //                  <h2>{this.props.contentProp}</h2>
+        //                </div>
+        //            );
+        //        }
+        //    }
+        //    App.defaultProps = {
+        //        headerProp: "Header from props...",
+        //        contentProp: "Content from props..."
+        //    }
+        //  
+        //    ReactDOM.render(
+        //        //REACT WHAT 
+        //        <App />,
+        //        // REACT WHERE - DIV WITH THE ID "APP"
+        //        document.getElementById("app")
+        //    );
+
+        // -> State and Props:
+        // 1. Let's combine state and props in the following app
+        // 2. Let's set the state in the parent component and then pass it down the component tree using props.
+        //
+        // Stateful Parent Component- App: 
+        //  
+        // class App extends React.Component {
+        //         constructor(props) {
+        //             super(props);
+        //             this.state = { // setting the state in the parent component 
+        //                 header: "Header from props...",
+        //                 content: "Content from props..."
+        //             }
+        //         }
+        //          render() {
+        //              return (
+        //                  <div>
+        //                     <Header headerProp = {this.state.header} />
+        //                     <Content contentProp = {this.state.content} />
+        //                  </div>
+        //              ); 
+        //          }
+        //        }
+        //     // Child Component - Header:
+        //     class Header extends React.Component {
+        //         render() {
+        //             return (
+        //                 <h1>{this.props.headerProp}</h1> // Passing state property to child component
+        //             );
+        //         }
+        //     }
+        //     // Child Component - Content:
+        //     class Content extends React.Component {
+        //         render() {
+        //             return(
+        //                 <h2>{this.props.contentProp}</h2> // Passing state property to child component
+        //             );
+        //         }
+        //     }
+
+        //     ReactDOM.render(
+        //         // REACT WHAT
+        //         <App />,
+        //         // REACT WHERE - DIV WITH THE ID "APP"
+        //         document.getElementById("app")
+        //     );
+
+        // -> Props validation:
+        // 1. Properties validation is a useful way to force the correct usage of the components. 
+        // 2. This will help in development stage of the app to avoid future bugs and problems.
+        // 3. This also makes the code more readable as we can see how each component should be used.
+        // 4. component.propTypes is used for props validation. 
+        // 5. We will get a console warning if any of the props are not using the correct type that we assigned.
+        // 6. After we specify validation patterns, we will set component.defaultProps
+        //
+        //    class App extends React.Component {
+        //        render() {
+        //            return (
+        //                <div>
+        //                  <h3>Array: {this.props.propArray}</h3> 
+        //                  <h3>Boolean: {this.props.propBool ? "True..." : "False"}</h3>
+        //                  <h3>Function: {this.props.propFunc(3)}</h3>
+        //                  <h3>Number: {this.props.propNumber}</h3>
+        //                  <h3>String: {this.props.propString}</h3>
+        //                  <h3>Object: {this.props.propObject.objectName1}</h3>
+        //                  <h3>Object: {this.props.propObject.objectName2}</h3>
+        //                  <h3>Object: {this.props.propObject.objectName3}</h3>
+        //                </div>
+        //               );
+        //        }
+        //    }
+        //     App.propTypes = {
+        //           propArray: PropTypes.array.isRequired,
+        //           propBool: PropTypes.bool.isRequired,
+        //           propFunc: PropTypes.func,
+        //           propNumber: PropTypes.number,
+        //           propString: PropTypes.string,
+        //           propObject: PropTypes.object
+        //     }
+        //
+        //     App.defaultProps = {
+        //          propArray: [1, 2, 3, 4, 5],
+        //          propBool: true,
+        //          propFunc: function(e){return e},
+        //          propNumber: 1,
+        //          propString: "String Value...",
+        //          propObject: {
+        //              objectName1: "objectValue1",
+        //              objectName2: "objectValue2",
+        //              objectName3: "objectValue3"
+        //          }
+        //     }
+        //
+        //     ReactDOM.render(
+        //         // REACT WHAT
+        //         <App />,
+        //         // REACT WHERE - DIV WITH THE ID "APP"
+        //         document.getElementById("app")
+        //     );
+
+        ///////////////////// => COMPONENT API <= /////////////////////
+        // -> Set State: 
+        // 1. This method is used to update the state of the component.
+        // 2. This method will not replace the original state but it will add changes to it. 
+        //
+        //   class App extends React.Component {
+        //       constructor() {
+        //           super();
+        //         
+        //           this.state = { // Created a state for the component 
+        //               data: [] // but with no data in it @ empty array 
+        //           }
+        //
+        //           this.setStateHandler = this.setStateHandler.bind(this); // In ES6 classes, we have to Manually bind this. 
+        //       }; 
+        //       // handler function 
+        //       setStateHandler() {
+        //           var item = "setState...";
+        //           var myArray = this.state.data.slice();
+        //               myArray.push(item);
+        //           this.setState(
+        //               {
+        //                   data: myArray // Updating the state
+        //               }
+        //           )    
+        //       }; 
+        //
+        //       render() {
+        //           return(
+        //               <div>
+        //                 <button onClick={this.setStateHandler}>SET STATE</button> {/* Calls the setStateHandler function when the button is clicked */}
+        //                 <h3>State Array: {this.state.data}</h3> {/* Display the updated state */}
+        //               </div>
+        //           );
+        //       }
+        //   }
+        //
+        //   ReactDOM.render(
+        //       // REACT WHAT
+        //       <App />,
+        //       // REACT WHERE - DIV WITH THE ID ("APP")
+        //       document.getElementById("app")
+        //   );
+
+        // -> Force Update: 
+        // This method will be used in a situation where you have to manually update the component.
+        //
+        //   class App extends React.Component {
+        //       constructor() {
+        //           super();
+        //
+        //           this.forceUpdateHandler = this.forceUpdateHandler.bind(this); // In ES6 class, We have to manually bind this
+        //       }
+        //
+        //       // Handler function
+        //       forceUpdateHandler() {
+        //           this.forceUpdate(); // This will force the update to the component
+        //       }
+        //
+        //       render() {
+        //           return (
+        //               <div>
+        //                 <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button> {/* Calls the forceUpdateHandler function when the button is clicked.*/}
+        //                  <h3>Random Number: {Math.random()}</h3> {/* A random number will be updated every time the button is clicked or the page refreshes */}
+        //               </div>
+        //           );
+        //       }
+        //   }
+        //
+        //    ReactDOM.render(
+        //        // REACT WHAT
+        //        <App />,
+        //        //REACT WHERE - DIV WITH THE ID "APP"
+        //        document.getElementById("app")
+        //    );
+
+        // -> Find DOM Node:
+        // For DOM manipulation, we can use ReactDOM.findDOMNode() Method
+        //
+        //   class App extends React.Component {
+        //        constructor() {
+        //            super();
+        //
+        //            this.findDomNodeHandler = this.findDomNodeHandler.bind(this); // In ES6 classes, we manually bind this
+        //        }
+        //
+        //        // Handler function
+        //        findDomNodeHandler() {
+        //            var myDiv = document.getElementById("myDiv");
+        //            ReactDOM.findDOMNode(myDiv).style.color = "green"; // Assign the color 
+        //        }
+        //
+        //        render() {
+        //            return (
+        //                <div>
+        //                 <button onClick={this.findDomNodeHandler}>FIND DOM NODE</button> {/* Calls the findDomNodeHandler function when the button is clicked. */}
+        //                 <div id="myDiv">NODE:</div> {/* The color of myDiv element changes to green when the button is clicked */}
+        //                </div>
+        //            );
+        //        }
+        //
+        //   }
+        //   ReactDOM.render(
+        //       // REACT WHAT 
+        //       <App />,
+        //       //REACT WHERE - DIV WITH THE ID "APP"
+        //       document.getElementById("app")
+        //   );
+        
+        ///////////////////// => COMPONENT LIFE CYCLE <= /////////////////////
+        // -> LifeCycle Methods:
+        // 1. componentWillMount => This method will be executed before rendering, on both the server and the client side.
+        // 2. componentDidMount => This method will be executed after the first render only on the client side. 
+        //    A. This is where AJAX requests and DOM or state updates should occur. 
+        //    B. This method is also used for integration with other JavaScript Frameworks and any functions with delayed execution such as setTimeout or setInterval.
+        //    C. This method can be used to update the state, so that we can trigger other lifecycle methods. 
+        // 3. componentWillReceiveProps => This method is invoked as soon as the props are updated before another render is called. We triggered it from setNewNumber when we updated the state. 
+        // 4. shouldComponentUpdate => This method should return true or false value. 
+        //    A. This will determine whether the component will be updated or not. 
+        //    B. This is set to true by default.  
+        //    C. If we are sure that the component doesn't need to render after state or props are updated, we can return false value. 
+        // 5. componentWillUpdate => This method is called just before rendering. 
+        // 6. componentDidUpdate => This method is called just after rendering. 
+        // componentWillUnmount => This method is called after the component is unmounted from the dom. 
+        // An example: 
+        // All the life cycle methods are inside the child component - Content.   
+        //
+        // class Content extends React.Component {
+        //       UNSAFE_componentWillMount() { // This method is deprecated, So using UNSAFE_ prefix to it to suppress the console error  
+        //         console.log('Component WILL MOUNT!');
+        //       } 
+        //       componentDidMount() {
+        //           console.log('Component DID MOUNT!');
+        //       }
+        //       UNSAFE_componentWillReceiveProps(newProps) { // This method is deprecated, So using UNSAFE_ prefix to it to suppress the console error
+        //           console.log('Component WILL RECEIVE PROPS!');
+        //       }
+        //       shouldComponentUpdate(nextProps, nextState) {
+        //           return true;
+        //       }
+        //       UNSAFE_componentWillUpdate(newProps, nextState) { // This method is deprecated, So using UNSAFE_ prefix to it to suppress the console error
+        //           console.log('Component WILL UPDATE!');
+        //       }
+        //       componentDidUpdate(prevProps, prevState) {
+        //           console.log('Component DID UPDATE!');
+        //       }
+        //       componentWillUnmount() {
+        //           console.log('Component WILL UNMOUNT!');
+        //       }
+        //       render() {
+        //           return (
+        //               <div><h3>{this.props.myNumber}</h3></div>
+        //           );
+        //       }
+        //     }
+        // Parent Component - App: 
+        //    class App extends React.Component {
+        //        constructor(props) {
+        //            super(props);
+        //
+        //            this.state = { // Setting initial state in the constructor method. 
+        //                data: 0
+        //            }
+        //
+        //            this.setNewNumber = this.setNewNumber.bind(this); // In ES6, We manually bind this 
+        //        };
+        //      
+        //        // setNewNumber function
+        //        setNewNumber() { // setNewNumber function will be used to update the initial state
+        //            this.setState({
+        //                data: this.state.data + 1
+        //            });
+        //        }
+        //
+        //        render() {
+        //            return (
+        //                <div>
+        //                  <button onClick={this.setNewNumber}>INCREMENT</button>
+        //                  <Content myNumber={this.state.data}></Content> 
+        //                </div>
+        //            );
+        //        }
+        //    } 
+        //
+        //    ReactDOM.render(
+        //        // REACT WHAT
+        //        <App />,
+        //        // REACT WHERE - DIV WITH THE ID "APP"
+        //        document.getElementById("app")
+        //    );
+        
+        ///////////////////// => FORMS <= /////////////////////
+        // -> Simple Example:
+        //
+        //   class App extends React.Component {
+        //       constructor(props) {
+        //           super(props);
+        //
+        //           this.state = { // Setting up state's initial value
+        //               data: "Initial Value..."
+        //           }
+        //
+        //           this.updateState = this.updateState.bind(this); // In ES6 classes, We manually bind this.
+        //       }
+        //
+        //       updateState(e) { // Update the state whenever the input value changes 
+        //          this.setState({
+        //              data: e.target.value 
+        //          });
+        //       }
+        //
+        //       render() {
+        //           return(
+        //               <div>
+        //                 <input type="text"
+        //                         value = {this.state.data} // Set input form with a value as this.state.data
+        //                         onChange = {this.updateState} // onChange event will watch the input changes and update the state accordingly. 
+        //                          />  
+        //                 <h3>{this.state.data}</h3>        
+        //               </div>
+        //           );
+        //       }
+        //   }
+        //   ReactDOM.render(
+        //       // REACT WHAT 
+        //       <App />,
+        //       // REACT WHERE 
+        //       document.getElementById("app")
+        //   );
+
+        // Complex Example: 
+        // 1. How to use forms from child component.
+        // 2. onChange method will trigger state update that will be passed to the child input value and rendered on the screen.
+        // 3. Whenever we need to update the state from the child component, we need to pass the function that will handle updating (updateState) as a prop (updateStateProp).
+        //
+        // Child Component - Content: 
+        //
+        //   class Content extends React.Component {
+        //       render() {
+        //           return (
+        //               <div>
+        //                 <input type="text"
+        //                        value={this.props.myDataProp}
+        //                        onChange={this.props.updateStateProp}
+        //                        />
+        //                   <h3>{this.props.myDataProp}</h3>     
+        //               </div>  
+        //           );
+        //       }
+        //   }  
+        //
+        //   Parent Component - App :
+        //
+        //   class App extends React.Component {
+        //       constructor(props) {
+        //           super(props);
+        //
+        //           this.state = {
+        //               data: "Updated from child..."
+        //           }
+        //
+        //           this.updateState = this.updateState.bind(this);
+        //       }
+        //
+        //       updateState(e) {
+        //           this.setState({
+        //               data: e.target.value
+        //           });
+        //       }
+        //
+        //       render() {
+        //           return (
+        //               <div>
+        //                 <Content myDataProp={this.state.data}
+        //                          updateStateProp={this.updateState}></Content>
+        //               </div>
+        //           );
+        //       }
+        //   }
+        //
+        //   ReactDOM.render(
+        //       //REACT WHAT 
+        //       <App />,
+        //       // REACT WHERE 
+        //       document.getElementById("app")
+        //   );
+          
+        ///////////////////// => EVENTS <= /////////////////////
+        // => Simple Example Using onClick Event on one single component:
+        //
+        // class App extends React.Component {
+        //      constructor(props) {
+        //          super(props);
+        //
+        //          this.state = {
+        //              data: "Initial data..."
+        //          }
+        //
+        //          this.updateState = this.updateState.bind(this);
+        //      }
+        //
+        //      updateState() {
+        //          this.setState({
+        //              data: "Updated data..."
+        //          });
+        //      }
+        //
+        //      render() {
+        //          return (
+        //              <div>
+        //                <button onClick={this.updateState}>Click</button>
+        //                <h3>{this.state.data}</h3>
+        //              </div>
+        //          );
+        //      }
+        //  } 
+        //
+        //  ReactDOM.render(
+        //      //REACT WHAT 
+        //      <App />,
+        //      // REACT WHERE -  DIV WITH THE ID "APP"
+        //      document.getElementById("app")
+        //  );
+
+        // => Steps involved in Child Events: 
+        // When we need to update the state of a parent component from its child component, we can create
+        // an event handler (updateState) in the parent component and 
+        // Pass it as a prop (updateStateProp) to the child component where we can just call it 
+           
+        // Child Component: 
+        //   class Content extends React.Component {
+        //       render() {
+        //           return(
+        //               <div>
+        //                 <button onClick={this.props.updateStateProp}>Click</button>
+        //                 <h1>{this.props.myDataProp}</h1>
+        //               </div>
+        //           );
+        //       }
+        //   }   
+        // Parent Component: 
+        //   class App extends React.Component {
+        //       constructor(props) {
+        //           super(props);
+        //
+        //           this.state = {
+        //               data: "Initial data..."
+        //           }
+        //           this.updateState = this.updateState.bind(this);
+        //       }
+        //
+        //       updateState() {
+        //           this.setState({
+        //              data: "Data Updated from the child component..."
+        //           });
+        //       }
+        //
+        //       render() {
+        //           return (
+        //               <div>
+        //                 <Content 
+        //                   myDataProp = {this.state.data} 
+        //                   updateStateProp = {this.updateState}>
+        //                   </Content>
+        //               </div>
+        //           );
+        //       }
+        //   }
+        //
+        //   ReactDOM.render(
+        //       //REACT WHAT
+        //       <App />,
+        //       //REACT WHERE
+        //       document.getElementById("app")
+        //   );
+
+        ///////////////////// => REACT - REF'S <= /////////////////////
+        // -> The ref is used to return a reference to the element. 
+        // -> Ref's should be avoided in most cases, however, they can be useful when we need DOM measurements or to add methods to the components. 
+        // ->> Using Ref's: 
+        // -> The following example shows how to use refs to clear the input field. 
+        // -> ClearInput function searches for element with ref = "myInput" value, resets the state, and add focus to it after the button is clicked. 
+
+        //     class App extends React.Component {
+        //         constructor(props) {
+        //             super(props);
+        //
+        //             this.state = {
+        //                 data: " "
+        //             }
+        //             this.updateState = this.updateState.bind(this);
+        //             this.clearInput = this.clearInput.bind(this);
+        //         }
+        //
+        //          updateState(e) {
+        //              this.setState({
+        //                  data: e.target.value
+        //              });
+        //          }
+        //
+        //          clearInput() {
+        //              this.setState({
+        //                  data: " "
+        //              });
+        //              ReactDOM.findDOMNode(this.refs.myInput).focus();
+        //          }
+        //
+        //         render() {
+        //             return (
+        //                 <div>
+        //                   <input value={this.state.data} onChange={this.updateState} ref="myInput"></input>
+        //                   <button onClick={this.clearInput}>Clear</button>
+        //                   <h1>{this.state.data}</h1>
+        //                 </div>
+        //             );
+        //         }
+        //     } 
+        //
+        //     ReactDOM.render(
+        //         //REACT WHAT
+        //            <App />,
+        //         //REACT WHERE
+        //            document.getElementById("app")
+        //       );
+        //   
+        // 
+        
+        ///////////////////// => REACT - KEY'S <= /////////////////////
+        // -> React keys are useful when working with dynamically created components
+        // or when your lists are altered by the users. 
+        // -> Setting the key value will keep your components uniquely identified after the change. 
+        // -> Using keys: 
+        // Dynamically creating Content elements with unique index (i).
+        // class App extends React.Component {
+        //     constructor() {
+        //         super();
+        //
+        //         this.state = {
+        //             data: [
+        //                 {
+        //                     component: "First...",
+        //                     id: 1
+        //                 }, 
+        //                 {
+        //                     component: "Second...",
+        //                     id: 2
+        //                 }, 
+        //                 {
+        //                     component: "Third...",
+        //                     id: 3
+        //                 }
+        //             ]
+        //         }
+        //     }
+        //
+        //     render() {
+        //         return (
+        //             <div>
+        //               <div>
+        //               {/* The map function will create three elements from the data array*/}
+        //               {/* Where i is the unique key which will be assigned for each created element*/}
+        //                 {this.state.data.map((dynamicComponent, i) => 
+        //                  <Content key = {i}componentData = {dynamicComponent}/>)}
+        //               </div>
+        //             </div>
+        //         );
+        //     }
+        // }
+        //
+        // class Content extends React.Component {
+        //     render() {
+        //         return (
+        //           <div>
+        //             <div>
+        //               {this.props.componentData.component}
+        //             </div>
+        //             <div>{this.props.componentData.id}</div>
+        //           </div>
+        //         );
+        //     }
+        // }
+        //
+        // ReactDOM.render(
+        //         //REACT WHAT
+        //            <App />,
+        //         //REACT WHERE
+        //            document.getElementById("app")
+        //       );
+        // -> If we add or remove some elements in the future or change the order of the 
+        // dynamically created elements, React will use the key values to keep track of each element.  
+        </script>
+</body>
+
+</html>
